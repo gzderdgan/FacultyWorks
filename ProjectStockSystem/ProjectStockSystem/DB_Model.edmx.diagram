@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fc4af0d033e4058ad1e01484b9fe1b8" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_Models.Administrator" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Cours" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Lecturer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.LoginAdmin" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.LoginLecturer" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.LoginStocker" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.LoginStudent" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Rezervation" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Staff" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Storage" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.StorageBorrowDate" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.Student" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.StudentStorage" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.sysdiagram" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_Models.WorkType" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="DB_Models.FK_Student_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Student_Lecturer" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Rezervation_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Storage_Rezervation" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Student_Rezervation" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Storage_StorageBool" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_StorageBorrowDate_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_StorageBorrowDate_StudentStorage" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Student_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_Student_WorkType" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_Models.FK_StudentStorage_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

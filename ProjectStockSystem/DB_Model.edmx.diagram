@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2b35c67efc244ca93e7e315aeaf84ce" Name="Diagram1">
+        <EntityTypeShape EntityType="FacultyWorksModel.Danisman" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.DepocuTeslimDurumu" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.Dersler" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.LoginAdmin" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.LoginLecturer" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.LoginStocker" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.LoginStudent" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.Malzeme" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.MalzemeDurumu" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.MalzemeTipi" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.Ogrenci" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.OgrenciCalismaTuru" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.OgrenciRezervasyonDurumu" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.RezervasyonOnayDurumu" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.OgrenciRezervasyonİliskisi" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacultyWorksModel.OgrenciSecilenMalzemeVeZamani" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="FacultyWorksModel.FK_Ogrenci_Danisman" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_Malzeme_MalzemeDurumu" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_Malzeme_MalzemeTipi" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_Malzeme_OgrenciCalismaTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciSecilenMalzemeListesi_Malzeme" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciRezervasyonİliskisi_Ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciSecilenMalzemeListesi_Ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciRezervasyonDurumu_RezervasyonOnayDurumu" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu1" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.OgrenciCalismaTuruİliskisi" ManuallyRouted="false" />
+        <AssociationConnector Association="FacultyWorksModel.OgrenciSecilenDers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

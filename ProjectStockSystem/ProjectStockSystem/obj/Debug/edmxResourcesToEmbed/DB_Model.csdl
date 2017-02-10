@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" />
+    <Property Name="admin_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="admin_surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="course_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Courses" FromRole="Courses" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Lecturer">
+    <Key>
+      <PropertyRef Name="lecturer_id" />
+    </Key>
+    <Property Name="lecturer_id" Type="Int32" Nullable="false" />
+    <Property Name="lecturer_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lecturer_surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lecturer_department" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Lecturer" FromRole="Lecturer" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="LoginAdmin">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginLecturer">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginStocker">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginStudent">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rezervation">
+    <Key>
+      <PropertyRef Name="rez_id" />
+    </Key>
+    <Property Name="rez_id" Type="Int32" Nullable="false" />
+    <Property Name="rez_bool" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rez_store" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StudentStorage" Relationship="Self.FK_Rezervation_Storage" FromRole="Rezervation" ToRole="StudentStorage" />
+    <NavigationProperty Name="Storages" Relationship="Self.FK_Storage_Rezervation" FromRole="Rezervation" ToRole="Storage" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Rezervation" FromRole="Rezervation" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="staff_id" />
+    </Key>
+    <Property Name="staff_id" Type="Int32" Nullable="false" />
+    <Property Name="staff_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="staff_surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="material_id" />
+    </Key>
+    <Property Name="material_id" Type="Int32" Nullable="false" />
+    <Property Name="material_bool" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="material_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="material_rez_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rezervation" Relationship="Self.FK_Storage_Rezervation" FromRole="Storage" ToRole="Rezervation" />
+    <NavigationProperty Name="StudentStorages" Relationship="Self.FK_Storage_StorageBool" FromRole="Storage" ToRole="StudentStorage" />
+  </EntityType>
+  <EntityType Name="StorageBorrowDate">
+    <Key>
+      <PropertyRef Name="storage_borrow_id" />
+    </Key>
+    <Property Name="storage_borrow_id" Type="Int32" Nullable="false" />
+    <Property Name="storage_student_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_StorageBorrowDate_Student" FromRole="StorageBorrowDate" ToRole="Student" />
+    <NavigationProperty Name="StudentStorage" Relationship="Self.FK_StorageBorrowDate_StudentStorage" FromRole="StorageBorrowDate" ToRole="StudentStorage" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="student_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="student_surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="student_department_id" Type="Int16" Nullable="false" />
+    <Property Name="student_rez_id" Type="Int32" Nullable="false" />
+    <Property Name="student_store_id" Type="Int32" Nullable="false" />
+    <Property Name="student_lecturer_id" Type="Int32" Nullable="false" />
+    <Property Name="student_store_startdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="student_store_enddate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="student_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="student_worktype_id" Type="Int32" Nullable="false" />
+    <Property Name="student_course_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="Self.FK_Student_Courses" FromRole="Student" ToRole="Courses" />
+    <NavigationProperty Name="Lecturer" Relationship="Self.FK_Student_Lecturer" FromRole="Student" ToRole="Lecturer" />
+    <NavigationProperty Name="Rezervation" Relationship="Self.FK_Student_Rezervation" FromRole="Student" ToRole="Rezervation" />
+    <NavigationProperty Name="StorageBorrowDates" Relationship="Self.FK_StorageBorrowDate_Student" FromRole="Student" ToRole="StorageBorrowDate" />
+    <NavigationProperty Name="StudentStorage" Relationship="Self.FK_Student_Storage" FromRole="Student" ToRole="StudentStorage" />
+    <NavigationProperty Name="WorkType" Relationship="Self.FK_Student_WorkType" FromRole="Student" ToRole="WorkType" />
+    <NavigationProperty Name="StudentStorages" Relationship="Self.FK_StudentStorage_Student" FromRole="Student" ToRole="StudentStorage" />
+  </EntityType>
+  <EntityType Name="StudentStorage">
+    <Key>
+      <PropertyRef Name="store_id" />
+    </Key>
+    <Property Name="store_id" Type="Int32" Nullable="false" />
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="store_bool" Type="Int32" Nullable="false" />
+    <Property Name="store_rez_start_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="store_rez_end_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="store_student_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rezervations" Relationship="Self.FK_Rezervation_Storage" FromRole="StudentStorage" ToRole="Rezervation" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK_Storage_StorageBool" FromRole="StudentStorage" ToRole="Storage" />
+    <NavigationProperty Name="StorageBorrowDates" Relationship="Self.FK_StorageBorrowDate_StudentStorage" FromRole="StudentStorage" ToRole="StorageBorrowDate" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Storage" FromRole="StudentStorage" ToRole="Student" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_StudentStorage_Student" FromRole="StudentStorage" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WorkType">
+    <Key>
+      <PropertyRef Name="worktype_id" />
+    </Key>
+    <Property Name="worktype_id" Type="Int32" Nullable="false" />
+    <Property Name="worktype_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_WorkType" FromRole="WorkType" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_Student_Courses">
+    <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="student_course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Lecturer">
+    <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecturer">
+        <PropertyRef Name="lecturer_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="student_lecturer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezervation_Storage">
+    <End Role="StudentStorage" Type="Self.StudentStorage" Multiplicity="1" />
+    <End Role="Rezervation" Type="Self.Rezervation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentStorage">
+        <PropertyRef Name="store_id" />
+      </Principal>
+      <Dependent Role="Rezervation">
+        <PropertyRef Name="rez_store" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Storage_Rezervation">
+    <End Role="Rezervation" Type="Self.Rezervation" Multiplicity="1" />
+    <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezervation">
+        <PropertyRef Name="rez_id" />
+      </Principal>
+      <Dependent Role="Storage">
+        <PropertyRef Name="material_rez_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Rezervation">
+    <End Role="Rezervation" Type="Self.Rezervation" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezervation">
+        <PropertyRef Name="rez_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="student_rez_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Storage_StorageBool">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="StudentStorage" Type="Self.StudentStorage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="material_id" />
+      </Principal>
+      <Dependent Role="StudentStorage">
+        <PropertyRef Name="store_bool" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StorageBorrowDate_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StorageBorrowDate" Type="Self.StorageBorrowDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="StorageBorrowDate">
+        <PropertyRef Name="storage_student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StorageBorrowDate_StudentStorage">
+    <End Role="StudentStorage" Type="Self.StudentStorage" Multiplicity="1" />
+    <End Role="StorageBorrowDate" Type="Self.StorageBorrowDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentStorage">
+        <PropertyRef Name="store_id" />
+      </Principal>
+      <Dependent Role="StorageBorrowDate">
+        <PropertyRef Name="storage_student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Storage">
+    <End Role="StudentStorage" Type="Self.StudentStorage" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentStorage">
+        <PropertyRef Name="store_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="student_store_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_WorkType">
+    <End Role="WorkType" Type="Self.WorkType" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkType">
+        <PropertyRef Name="worktype_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="student_worktype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentStorage_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentStorage" Type="Self.StudentStorage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="StudentStorage">
+        <PropertyRef Name="store_student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+    <EntitySet Name="Courses" EntityType="Self.Cours" />
+    <EntitySet Name="Lecturers" EntityType="Self.Lecturer" />
+    <EntitySet Name="LoginAdmins" EntityType="Self.LoginAdmin" />
+    <EntitySet Name="LoginLecturers" EntityType="Self.LoginLecturer" />
+    <EntitySet Name="LoginStockers" EntityType="Self.LoginStocker" />
+    <EntitySet Name="LoginStudents" EntityType="Self.LoginStudent" />
+    <EntitySet Name="Rezervations" EntityType="Self.Rezervation" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="Storages" EntityType="Self.Storage" />
+    <EntitySet Name="StorageBorrowDates" EntityType="Self.StorageBorrowDate" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="StudentStorages" EntityType="Self.StudentStorage" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="WorkTypes" EntityType="Self.WorkType" />
+    <AssociationSet Name="FK_Student_Courses" Association="Self.FK_Student_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Lecturer" Association="Self.FK_Student_Lecturer">
+      <End Role="Lecturer" EntitySet="Lecturers" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezervation_Storage" Association="Self.FK_Rezervation_Storage">
+      <End Role="StudentStorage" EntitySet="StudentStorages" />
+      <End Role="Rezervation" EntitySet="Rezervations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Storage_Rezervation" Association="Self.FK_Storage_Rezervation">
+      <End Role="Rezervation" EntitySet="Rezervations" />
+      <End Role="Storage" EntitySet="Storages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Rezervation" Association="Self.FK_Student_Rezervation">
+      <End Role="Rezervation" EntitySet="Rezervations" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Storage_StorageBool" Association="Self.FK_Storage_StorageBool">
+      <End Role="Storage" EntitySet="Storages" />
+      <End Role="StudentStorage" EntitySet="StudentStorages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StorageBorrowDate_Student" Association="Self.FK_StorageBorrowDate_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StorageBorrowDate" EntitySet="StorageBorrowDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StorageBorrowDate_StudentStorage" Association="Self.FK_StorageBorrowDate_StudentStorage">
+      <End Role="StudentStorage" EntitySet="StudentStorages" />
+      <End Role="StorageBorrowDate" EntitySet="StorageBorrowDates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Storage" Association="Self.FK_Student_Storage">
+      <End Role="StudentStorage" EntitySet="StudentStorages" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_WorkType" Association="Self.FK_Student_WorkType">
+      <End Role="WorkType" EntitySet="WorkTypes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentStorage_Student" Association="Self.FK_StudentStorage_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentStorage" EntitySet="StudentStorages" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_Models.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_Models.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
